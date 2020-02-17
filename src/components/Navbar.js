@@ -20,7 +20,9 @@ const Navbar = () => {
           <Link to="/">
             <img src={logo} alt="home" className={classes.logo} />
           </Link>
-          <Typography variant="h6">37's Macramé Shop</Typography>
+          <Typography variant="h4" className={classes.title}>
+            Macramé Shop 37
+          </Typography>
           <div className={classes.menu}>
             <Button
               component={Link}
@@ -52,6 +54,9 @@ const useStyles = makeStyles(theme => ({
   logo: {
     width: "3.5rem",
     marginRight: "1rem"
+  },
+  title: {
+    ...theme.fonts.title
   },
   menu: {
     flexGrow: 1,

@@ -1,12 +1,28 @@
+const primaryColor = "#4caf50";
+const secondaryColor = "#ef6c00";
+
 export default {
   palette: {
     primary: {
-      main: "#4caf50",
+      main: primaryColor,
       contrastText: "#eee"
     },
     secondary: {
-      main: "#f7931f",
-      contrastText: "#111"
+      main: secondaryColor,
+      contrastText: "#eee"
+    }
+  },
+  fonts: {
+    title: {
+      fontFamily: "Niconne, cursive"
+    }
+  },
+  global: {
+    hr: {
+      width: "5rem",
+      height: 2,
+      border: "none",
+      background: secondaryColor
     }
   }
 };
