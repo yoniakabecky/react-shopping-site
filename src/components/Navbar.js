@@ -14,13 +14,13 @@ import IconButton from "@material-ui/core/IconButton";
 const Navbar = () => {
   const classes = useStyles();
   return (
-    <div className={classes.grow}>
+    <div>
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar className={classes.container}>
           <Link to="/">
             <img src={logo} alt="home" className={classes.logo} />
           </Link>
-          <Typography variant="h4" className={classes.title}>
+          <Typography variant="h4" className={classes.storeName}>
             Macramé Shop 37
           </Typography>
           <div className={classes.menu}>
@@ -51,11 +51,12 @@ const Navbar = () => {
 };
 
 const useStyles = makeStyles(theme => ({
+  ...theme.global,
   logo: {
     width: "3.5rem",
     marginRight: "1rem"
   },
-  title: {
+  storeName: {
     ...theme.fonts.title
   },
   menu: {

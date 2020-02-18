@@ -37,16 +37,12 @@ const Hero = ({ img, title, subtitle }) => {
 const useStyles = makeStyles(theme => ({
   ...theme.global,
   wrapper: {
-    ...theme.fonts.title,
     padding: "1rem 3rem",
-    background: "rgba(250, 250, 250, 0.4)",
-    textTransform: "capitalize"
-  },
-  title: {
-    fontSize: "3.5rem",
-    margin: "1rem auto"
+    background: "rgba(250, 250, 250, 0.4)"
   },
   subtitle: {
+    ...theme.fonts.title,
+    textTransform: "capitalize",
     fontSize: "2rem",
     margin: "1rem auto"
   }
