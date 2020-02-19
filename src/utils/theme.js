@@ -9,6 +9,7 @@ export default {
     },
     secondary: {
       main: secondaryColor,
+      light: "#fff3e0",
       contrastText: "#eee"
     }
   },
@@ -33,7 +34,13 @@ export default {
       fontFamily: "Niconne, cursive",
       textTransform: "capitalize",
       fontSize: "3.5rem",
-      margin: "1rem auto"
+      margin: "2rem auto"
+    },
+    sectionBody: {
+      display: "flex",
+      flexWrap: "wrap",
+      justifyContent: "space-evenly",
+      margin: "2rem auto 5rem auto"
     }
   }
 };

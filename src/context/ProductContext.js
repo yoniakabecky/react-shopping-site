@@ -48,3 +48,13 @@ export default class ProductProvider extends Component {
 }
 
 export const ProductConsumer = ProductContext.Consumer;
+
+export function withProductConsumer(Component) {
+  return function ConsumerWrapper(props) {
+    return (
+      <ProductConsumer>
+        {value => <Component {...props} context={value} />}
+      </ProductConsumer>
+    );
+  };
+}
