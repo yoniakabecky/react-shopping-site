@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import defaultImg from "../images/etc3.jpeg";
 
 const StyledHero = styled.header`
-  min-height: 60vh;
+  min-height: ${props => (props.full ? "100vh" : "60vh")};
   background: url(${props => (props.img ? props.img : defaultImg)}) center/cover
     no-repeat;
   display: flex;
@@ -15,10 +15,10 @@ const StyledHero = styled.header`
   text-align: center;
 `;
 
-const Hero = ({ img, title, subtitle }) => {
+const Hero = ({ img, title, subtitle, full }) => {
   const classes = useStyles();
   return (
-    <StyledHero img={img}>
+    <StyledHero img={img} full={full}>
       <div className={classes.wrapper}>
         <h3 className={classes.title}>{title}</h3>
         {subtitle ? (

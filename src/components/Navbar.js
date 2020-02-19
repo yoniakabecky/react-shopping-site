@@ -15,7 +15,7 @@ const Navbar = () => {
   const classes = useStyles();
   return (
     <div>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar className={classes.container}>
           <Link to="/">
             <img src={logo} alt="home" className={classes.logo} />
