@@ -2,7 +2,6 @@ import React from "react";
 import SectionTitle from "./SectionTitle";
 
 import { makeStyles } from "@material-ui/core/styles";
-import orange from "@material-ui/core/colors/orange";
 import Typography from "@material-ui/core/Typography";
 import SmileIcon from "@material-ui/icons/Mood";
 import HandIcon from "@material-ui/icons/PanTool";
@@ -56,7 +55,7 @@ const About = () => {
 const useStyles = makeStyles(theme => ({
   ...theme.global,
   backgroundColor: {
-    background: orange[50],
+    background: theme.palette.secondary.light,
     padding: "0.5rem 0"
   },
   contentsWrapper: {

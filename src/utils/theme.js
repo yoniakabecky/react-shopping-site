@@ -1,5 +1,8 @@
+import orange from "@material-ui/core/colors/orange";
+
 const primaryColor = "#4caf50";
 const secondaryColor = "#ef6c00";
+const secondaryLight = orange[50];
 
 export default {
   palette: {
@@ -9,7 +12,7 @@ export default {
     },
     secondary: {
       main: secondaryColor,
-      light: "#fff3e0",
+      light: secondaryLight,
       contrastText: "#eee"
     }
   },

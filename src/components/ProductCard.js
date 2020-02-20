@@ -7,7 +7,8 @@ import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
+
+import etc1 from "../images/etc1.jpeg";
 
 const ProductCard = ({ product }) => {
   const classes = useStyles();
@@ -19,7 +20,7 @@ const ProductCard = ({ product }) => {
         <CardActionArea>
           <CardMedia
             component="img"
-            alt="Contemplative Reptile"
+            alt="product main"
             image={images[0]}
             title={name}
             className={classes.image}

@@ -4,7 +4,7 @@ import SectionTitle from "./SectionTitle";
 import { withProductConsumer } from "../context/ProductContext";
 
 import { makeStyles } from "@material-ui/core/styles";
-import { CircularProgress } from "@material-ui/core";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import ProductCard from "./ProductCard";
 
 const FeaturedProducts = ({ context }) => {
