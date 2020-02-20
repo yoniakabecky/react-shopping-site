@@ -40,6 +40,14 @@ const Navbar = () => {
             >
               Products
             </Button>
+            <Button
+              component={Link}
+              to="/products"
+              color="inherit"
+              className={classes.menuBtn}
+            >
+              Workshops
+            </Button>
           </div>
           <IconButton component={Link} to="/cart" color="inherit">
             <ShoppingCartIcon />

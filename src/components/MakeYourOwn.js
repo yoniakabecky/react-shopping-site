@@ -98,7 +98,8 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.text.secondary
   },
   name: {
-    margin: "0.5rem auto"
+    margin: "0.5rem auto",
+    textTransform: "capitalize"
   }
 }));
 
