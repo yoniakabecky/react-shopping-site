@@ -36,8 +36,7 @@ const ProductCard = ({ product }) => {
 const useStyles = makeStyles(theme => ({
   ...theme.global,
   card: {
-    maxWidth: "18rem",
-    minWidth: "15rem",
+    width: "15rem",
     margin: "1rem"
   },
   image: {

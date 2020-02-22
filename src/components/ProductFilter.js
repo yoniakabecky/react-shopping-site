@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { withProductConsumer } from "../context/ProductContext";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -11,61 +10,24 @@ import Slider from "@material-ui/core/Slider";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
-const getUniqueItem = (items, value) => {
-  return [...new Set(items.map(item => item[value]))];
-};
+const sortMenuList = ["price: low to high", "price: high to low", "featured"];
 
-const sortMenuList = ["featured", "price: low to high", "price: high to low"];
-
-const ProductFilter = ({ context, products }) => {
+const ProductFilter = ({ context }) => {
   const classes = useStyle();
-  const { minPrice, maxPrice } = context;
-  const [filter, setFilter] = React.useState({
-    category: "all",
-    price: [minPrice, maxPrice],
-    sort: "featured"
-  });
+  const {
+    category,
+    categories,
+    price,
+    minPrice,
+    maxPrice,
+    sort,
+    handleChange,
+    handlePriceInputChange,
+    handlePriceSliderChange,
+    resetFilter
+  } = context;
 
-  const handleChange = name => event => {
-    setFilter({
-      ...filter,
-      [name]: event.target.value
-    });
-  };
-
-  const handlePriceSliderChange = (event, newValue) => {
-    setFilter({
-      ...filter,
-      price: newValue
-    });
-  };
-
-  const handlePriceInputChange = event => {
-    const newValue = Number(event.target.value);
-    const id = event.target.id;
-    let newPriceRange = [...filter.price];
-
-    id === "minPrice"
-      ? (newPriceRange[0] = newValue)
-      : (newPriceRange[1] = newValue);
-
-    setFilter({
-      ...filter,
-      price: newPriceRange
-    });
-  };
-
-  const handleReset = () => {
-    setFilter({
-      category: "all",
-      price: [minPrice, maxPrice],
-      sort: "featured"
-    });
-  };
-
-  let categories = getUniqueItem(products, "category");
-  categories = ["all", ...categories];
-  categories = categories.map((category, index) => {
+  let categoryList = categories.map((category, index) => {
     return (
       <MenuItem value={category} key={index} className={classes.menuItem}>
         {category}
@@ -78,7 +40,7 @@ const ProductFilter = ({ context, products }) => {
       <FormControl color="secondary" className={classes.formControl}>
         <InputLabel>category</InputLabel>
         <Select
-          value={filter.category}
+          value={category}
           id="categorySelect"
           inputProps={{
             name: "category",
@@ -86,19 +48,19 @@ const ProductFilter = ({ context, products }) => {
           }}
           onChange={handleChange("category")}
         >
-          {categories}
+          {categoryList}
         </Select>
       </FormControl>
       <div className={classes.priceWrapper}>
         <span className={classes.sliderLabel}>price</span>
         <div className={classes.priceInputWrapper}>
           <Slider
-            value={filter.price}
+            value={price}
             onChange={handlePriceSliderChange}
             valueLabelDisplay="auto"
             color="secondary"
-            aria-labelledby="range-slider"
             className={classes.slider}
+            max={maxPrice}
           />
           <TextField
             id="minPrice"
@@ -111,10 +73,9 @@ const ProductFilter = ({ context, products }) => {
               min: minPrice,
               max: maxPrice,
               type: "number",
-              "aria-labelledby": "input-slider",
               className: classes.input
             }}
-            value={filter.price[0]}
+            value={price[0]}
             className={classes.textField}
             onChange={handlePriceInputChange}
           />
@@ -130,10 +91,9 @@ const ProductFilter = ({ context, products }) => {
               min: minPrice,
               max: maxPrice,
               type: "number",
-              "aria-labelledby": "input-slider",
               className: classes.input
             }}
-            value={filter.price[1]}
+            value={price[1]}
             className={classes.textField}
             onChange={handlePriceInputChange}
           />
@@ -142,7 +102,7 @@ const ProductFilter = ({ context, products }) => {
       <FormControl color="secondary" className={classes.formControl}>
         <InputLabel>sort</InputLabel>
         <Select
-          value={filter.sort}
+          value={sort}
           id="categorySelect"
           inputProps={{
             name: "sort",
@@ -162,7 +122,7 @@ const ProductFilter = ({ context, products }) => {
         variant="contained"
         size="small"
         className={classes.resetBtn}
-        onClick={handleReset}
+        onClick={resetFilter}
       >
         reset all
       </Button>
@@ -218,9 +178,5 @@ const useStyle = makeStyles(theme => ({
     height: "2.5rem"
   }
 }));
-
-ProductFilter.propTypes = {
-  products: PropTypes.array.isRequired
-};
 
 export default withProductConsumer(ProductFilter);
