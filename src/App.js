@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import MyTheme from "./utils/theme";
 
-import Navbar from "./components/Navbar";
+import Navbar from "./components/layout/Navbar";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
 import SingleProduct from "./pages/SingleProduct";

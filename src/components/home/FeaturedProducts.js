@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import SectionTitle from "./SectionTitle";
-import { withProductConsumer } from "../context/ProductContext";
+import SectionTitle from "../layout/SectionTitle";
+import { withProductConsumer } from "../../context/ProductContext";
 
-import ProductList from "./ProductList";
+import ProductList from "../product/ProductList";
 
 import { makeStyles } from "@material-ui/core/styles";
 

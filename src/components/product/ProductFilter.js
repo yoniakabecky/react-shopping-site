@@ -1,5 +1,5 @@
 import React from "react";
-import { withProductConsumer } from "../context/ProductContext";
+import { withProductConsumer } from "../../context/ProductContext";
 
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";

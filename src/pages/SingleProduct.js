@@ -1,7 +1,7 @@
 import React from "react";
 import { withProductConsumer } from "../context/ProductContext";
-import Hero from "../components/Hero";
-import Footer from "../components/Footer";
+import Hero from "../components/layout/Hero";
+import Footer from "../components/layout/Footer";
 import Error from "./Error";
 import { Link } from "react-router-dom";
 

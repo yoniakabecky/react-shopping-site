@@ -1,5 +1,5 @@
 import React from "react";
-import SectionTitle from "./SectionTitle";
+import SectionTitle from "../layout/SectionTitle";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";

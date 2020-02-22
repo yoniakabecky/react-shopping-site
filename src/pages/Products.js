@@ -3,13 +3,13 @@ import { withProductConsumer } from "../context/ProductContext";
 
 import heroImage from "../images/productsHero.jpeg";
 
-import Hero from "../components/Hero";
-import SectionTitle from "../components/SectionTitle";
-import ProductFilter from "../components/ProductFilter";
-import Footer from "../components/Footer";
+import Hero from "../components/layout/Hero";
+import SectionTitle from "../components/layout/SectionTitle";
+import ProductFilter from "../components/product/ProductFilter";
+import Footer from "../components/layout/Footer";
 
 import { makeStyles } from "@material-ui/core/styles";
-import ProductList from "../components/ProductList";
+import ProductList from "../components/product/ProductList";
 
 const Products = ({ context }) => {
   const classes = useStyles();
