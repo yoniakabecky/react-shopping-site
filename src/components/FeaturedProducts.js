@@ -3,36 +3,24 @@ import PropTypes from "prop-types";
 import SectionTitle from "./SectionTitle";
 import { withProductConsumer } from "../context/ProductContext";
 
+import ProductList from "./ProductList";
+
 import { makeStyles } from "@material-ui/core/styles";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import ProductCard from "./ProductCard";
 
 const FeaturedProducts = ({ context }) => {
   const classes = useStyles();
-  const { loading, products, featuredProducts } = context;
+  const { loading, featuredProducts } = context;
+
   return (
     <div className={classes.container}>
       <SectionTitle title="Featured Products" />
-
-      <div className={classes.sectionBody}>
-        {loading ? (
-          <CircularProgress color="secondary" size="4rem" />
-        ) : (
-          products.map(product => (
-            <ProductCard key={product.id} product={product} />
-          ))
-        )}
-      </div>
+      <ProductList products={featuredProducts} loading={loading} />
     </div>
   );
 };
 
 const useStyles = makeStyles(theme => ({
-  ...theme.global,
-  sectionBody: {
-    ...theme.global.sectionBody,
-    flexWrap: "no-wrap"
-  }
+  ...theme.global
 }));
 
 FeaturedProducts.propTypes = {

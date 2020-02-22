@@ -8,7 +8,11 @@ export default class ProductProvider extends Component {
     products: [],
     sortedProducts: [],
     featuredProducts: [],
-    loading: true
+    loading: true,
+    type: "all",
+    price: 0,
+    minPrice: 0,
+    maxPrice: 100
   };
 
   componentDidMount() {
