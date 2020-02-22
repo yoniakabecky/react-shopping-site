@@ -9,24 +9,122 @@ export default class ProductProvider extends Component {
     sortedProducts: [],
     featuredProducts: [],
     loading: true,
-    type: "all",
-    price: 0,
+    category: "all",
+    categories: [],
+    price: [0, 0],
     minPrice: 0,
-    maxPrice: 100
+    maxPrice: 0,
+    sort: "price: low to high"
   };
 
-  componentDidMount() {
+  getData = () => {
     let products = this.formatData(initialData);
     let featuredProducts = products.filter(
       product => product.featured === true
     );
+
+    let maxPrice = Math.max(...products.map(product => product.price));
+
+    let categories = this.getUniqueItem(products, "category");
+    categories = ["all", ...categories];
+
     this.setState({
       products,
       featuredProducts,
       sortedProducts: products,
-      loading: false
+      loading: false,
+      price: [0, maxPrice],
+      maxPrice,
+      categories
     });
+  };
+
+  componentDidMount() {
+    this.getData();
   }
+
+  getUniqueItem = (items, value) => {
+    return [...new Set(items.map(item => item[value]))];
+  };
+
+  handleChange = name => event => {
+    this.setState(
+      {
+        [name]: event.target.value
+      },
+      this.filteredProducts
+    );
+  };
+
+  handlePriceSliderChange = (event, newValue) => {
+    this.setState(
+      {
+        price: newValue
+      },
+      this.filteredProducts
+    );
+  };
+
+  handlePriceInputChange = event => {
+    const newValue = Number(event.target.value);
+    const id = event.target.id;
+    let newPriceRange = [this.state.minPrice, this.state.maxPrice];
+
+    id === "minPrice"
+      ? (newPriceRange[0] = newValue)
+      : (newPriceRange[1] = newValue);
+
+    this.setState(
+      {
+        price: newPriceRange
+      },
+      this.filteredProducts
+    );
+  };
+
+  resetFilter = () => {
+    let products = this.formatData(initialData);
+    let maxPrice = Math.max(...products.map(product => product.price));
+
+    this.setState({
+      category: "all",
+      price: [0, maxPrice],
+      sort: "featured",
+      sortedProducts: products
+    });
+  };
+
+  filteredProducts = () => {
+    let { products, category, price, sort } = this.state;
+    let tempProducts = [...products];
+
+    // by category
+    if (category !== "all") {
+      tempProducts = tempProducts.filter(
+        product => product.category === category
+      );
+    }
+
+    // by price
+    tempProducts = tempProducts.filter(
+      product => product.price >= price[0] && product.price <= price[1]
+    );
+
+    // by sort
+    if (sort === "featured") {
+      tempProducts = tempProducts.filter(product => product.featured === true);
+    }
+    if (sort === "price: high to low") {
+      tempProducts = tempProducts.sort((a, b) => b.price - a.price);
+    }
+    if (sort === "price: low to high") {
+      tempProducts = tempProducts.sort((a, b) => a.price - b.price);
+    }
+
+    this.setState({
+      sortedProducts: tempProducts
+    });
+  };
 
   formatData = products => {
     let tempProducts = products.map(item => {
@@ -42,7 +140,11 @@ export default class ProductProvider extends Component {
     return (
       <ProductContext.Provider
         value={{
-          ...this.state
+          ...this.state,
+          handleChange: this.handleChange,
+          handlePriceSliderChange: this.handlePriceSliderChange,
+          handlePriceInputChange: this.handlePriceInputChange,
+          resetFilter: this.resetFilter
         }}
       >
         {this.props.children}
