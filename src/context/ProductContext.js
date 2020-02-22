@@ -86,12 +86,15 @@ export default class ProductProvider extends Component {
     let products = this.formatData(initialData);
     let maxPrice = Math.max(...products.map(product => product.price));
 
-    this.setState({
-      category: "all",
-      price: [0, maxPrice],
-      sort: "featured",
-      sortedProducts: products
-    });
+    this.setState(
+      {
+        category: "all",
+        price: [0, maxPrice],
+        sort: "price: low to high",
+        sortedProducts: products
+      },
+      this.filteredProducts
+    );
   };
 
   filteredProducts = () => {
@@ -126,6 +129,12 @@ export default class ProductProvider extends Component {
     });
   };
 
+  getProductDetails = path => {
+    let tempProducts = [...this.state.products];
+    const product = tempProducts.find(product => product.path === path);
+    return product;
+  };
+
   formatData = products => {
     let tempProducts = products.map(item => {
       let id = item.sys.id;
@@ -144,7 +153,8 @@ export default class ProductProvider extends Component {
           handleChange: this.handleChange,
           handlePriceSliderChange: this.handlePriceSliderChange,
           handlePriceInputChange: this.handlePriceInputChange,
-          resetFilter: this.resetFilter
+          resetFilter: this.resetFilter,
+          getProductDetails: this.getProductDetails
         }}
       >
         {this.props.children}
