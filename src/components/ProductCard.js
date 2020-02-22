@@ -8,8 +8,6 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 
-import etc1 from "../images/etc1.jpeg";
-
 const ProductCard = ({ product }) => {
   const classes = useStyles();
   const { name, images, path, price } = product;
