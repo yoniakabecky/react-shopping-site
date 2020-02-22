@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import SectionTitle from "./SectionTitle";
 import { Link } from "react-router-dom";
 import { withWorkshopConsumer } from "../context/WorkshopContext";
@@ -11,25 +10,6 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import CircularProgress from "@material-ui/core/CircularProgress";
-
-// const workshop = [
-//   {
-//     id: "1",
-//     level: "beginner",
-//     name: "Making Coaster",
-//     description:
-//       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt, possimus!",
-//     images: [etc1, etc2]
-//   },
-//   {
-//     id: "2",
-//     level: "all level",
-//     name: "Plant Hanger DIY",
-//     description:
-//       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt, possimus!",
-//     images: [etc2, etc1]
-//   }
-// ];
 
 const MakeYourOwn = ({ context }) => {
   const classes = useStyles();

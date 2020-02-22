@@ -6,33 +6,31 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import TwitterIcon from "@material-ui/icons/Twitter";
 
+const socialIcons = [
+  { icon: <FacebookIcon />, href: "https://facebook.com" },
+  { icon: <InstagramIcon />, href: "https://instagram.com" },
+  { icon: <TwitterIcon />, href: "https://twitter.com" }
+];
+
 const Footer = () => {
   const classes = useStyles();
   const thisYear = new Date().getFullYear();
+
   return (
     <div className={classes.backgroundColor}>
       <div className={classes.container}>
-        <MuiLink
-          href="https://facebook.com"
-          color="textSecondary"
-          className={classes.muiLink}
-        >
-          <FacebookIcon />
-        </MuiLink>
-        <MuiLink
-          href="https://facebook.com"
-          color="textSecondary"
-          className={classes.muiLink}
-        >
-          <InstagramIcon />
-        </MuiLink>
-        <MuiLink
-          href="https://facebook.com"
-          color="textSecondary"
-          className={classes.muiLink}
-        >
-          <TwitterIcon />
-        </MuiLink>
+        {socialIcons.map((item, index) => (
+          <MuiLink
+            href={item.href}
+            color="textSecondary"
+            className={classes.muiLink}
+            target="_blank"
+            key={index}
+          >
+            {item.icon}
+          </MuiLink>
+        ))}
+
         <p className={classes.copyright}>©{thisYear} Macramé Shop 37</p>
       </div>
     </div>

@@ -42,7 +42,7 @@ const Navbar = () => {
             </Button>
             <Button
               component={Link}
-              to="/products"
+              to="/workshops"
               color="inherit"
               className={classes.menuBtn}
             >
