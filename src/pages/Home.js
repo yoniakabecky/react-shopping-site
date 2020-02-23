@@ -6,16 +6,16 @@ import Footer from "../components/layout/Footer";
 import MakeYourOwn from "../components/home/MakeYourOwn";
 
 import heroImage from "../images/hero.jpeg";
+import BodyContainer from "../components/layout/BodyContainer";
 
 const Home = () => {
   return (
-    <>
+    <BodyContainer>
       <Hero img={heroImage} title="macramé shop 37" subtitle="welcome" full />
       <FeaturedProducts />
       <About />
       <MakeYourOwn />
-      <Footer />
-    </>
+    </BodyContainer>
   );
 };
 

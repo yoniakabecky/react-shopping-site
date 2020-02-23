@@ -17,8 +17,8 @@ const Footer = () => {
   const thisYear = new Date().getFullYear();
 
   return (
-    <div className={classes.backgroundColor}>
-      <div className={classes.container}>
+    <div className={classes.footerWrapper}>
+      <div className={classes.alignCenter}>
         {socialIcons.map((item, index) => (
           <MuiLink
             href={item.href}
@@ -39,16 +39,18 @@ const Footer = () => {
 
 const useStyles = makeStyles(theme => ({
   ...theme.global,
-  backgroundColor: {
-    background: theme.palette.primary.light,
-    padding: "1rem"
+  footerWrapper: {
+    width: "100%",
+    paddingTop: "1rem",
+    minHeight: "5rem",
+    flexShrink: 0,
+    background: theme.palette.primary.light
   },
   copyright: {
     fontSize: "0.8rem",
     color: theme.palette.text.secondary
   },
-  container: {
-    ...theme.global.container,
+  alignCenter: {
     textAlign: "center"
   },
   muiLink: {

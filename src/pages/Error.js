@@ -1,7 +1,12 @@
 import React from "react";
+import BodyContainer from "../components/layout/BodyContainer";
 
 const Error = () => {
-  return <div>Page Not Found</div>;
+  return (
+    <BodyContainer>
+      <div>Page Not Found</div>
+    </BodyContainer>
+  );
 };
 
 export default Error;

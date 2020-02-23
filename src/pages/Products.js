@@ -6,7 +6,7 @@ import heroImage from "../images/productsHero.jpeg";
 import Hero from "../components/layout/Hero";
 import SectionTitle from "../components/layout/SectionTitle";
 import ProductFilter from "../components/product/ProductFilter";
-import Footer from "../components/layout/Footer";
+import BodyContainer from "../components/layout/BodyContainer";
 
 import { makeStyles } from "@material-ui/core/styles";
 import ProductList from "../components/product/ProductList";
@@ -16,15 +16,14 @@ const Products = ({ context }) => {
   const { sortedProducts, loading } = context;
 
   return (
-    <>
+    <BodyContainer>
       <Hero title="our products" img={heroImage} />
-      <SectionTitle title="search products" />
       <div className={classes.container}>
+        <SectionTitle title="search products" />
         <ProductFilter products={sortedProducts} />
         <ProductList products={sortedProducts} loading={loading} />
       </div>
-      <Footer />
-    </>
+    </BodyContainer>
   );
 };
 
