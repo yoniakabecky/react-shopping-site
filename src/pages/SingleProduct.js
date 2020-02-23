@@ -1,16 +1,17 @@
 import React from "react";
-import { withProductConsumer } from "../context/ProductContext";
-import Hero from "../components/layout/Hero";
-import Footer from "../components/layout/Footer";
-import Error from "./Error";
 import { Link } from "react-router-dom";
+import { withProductConsumer } from "../context/ProductContext";
+
+import Hero from "../components/layout/Hero";
+import Error from "./Error";
+import BodyContainer from "../components/layout/BodyContainer";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
+import Button from "@material-ui/core/Button";
 
 import defaultImage from "../images/productsHero.jpeg";
-import { Button } from "@material-ui/core";
 
 const SingleProduct = props => {
   const classes = useStyles();
@@ -30,7 +31,7 @@ const SingleProduct = props => {
   const [mainImage, ...otherImages] = images;
 
   return (
-    <div>
+    <BodyContainer>
       <Hero title={name} img={images[0]} />
       <div className={classes.container}>
         <Grid container>
@@ -92,8 +93,7 @@ const SingleProduct = props => {
           </Grid>
         </Grid>
       </div>
-      <Footer />
-    </div>
+    </BodyContainer>
   );
 };
 

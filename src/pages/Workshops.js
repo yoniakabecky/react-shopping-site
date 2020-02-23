@@ -1,7 +1,12 @@
 import React from "react";
+import BodyContainer from "../components/layout/BodyContainer";
 
 const Workshops = () => {
-  return <div>this is workshop page</div>;
+  return (
+    <BodyContainer>
+      <div>this is workshop page</div>
+    </BodyContainer>
+  );
 };
 
 export default Workshops;

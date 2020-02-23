@@ -11,6 +11,7 @@ import Cart from "./pages/Cart";
 import Error from "./pages/Error";
 import Workshops from "./pages/Workshops";
 import SingleWorkshop from "./pages/SingleWorkshop";
+import Footer from "./components/layout/Footer";
 
 const theme = createMuiTheme(MyTheme);
 
@@ -27,6 +28,7 @@ function App() {
         <Route exact path="/cart" component={Cart} />
         <Route component={Error} />
       </Switch>
+      <Footer />
     </ThemeProvider>
   );
 }
