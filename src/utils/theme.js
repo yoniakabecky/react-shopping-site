@@ -3,6 +3,7 @@ import orange from "@material-ui/core/colors/orange";
 const primaryColor = "#4caf50";
 const secondaryColor = "#ef6c00";
 const secondaryLight = orange[50];
+const errorColor = "#FB2845";
 
 export default {
   palette: {
@@ -14,6 +15,9 @@ export default {
       main: secondaryColor,
       light: secondaryLight,
       contrastText: "#eee"
+    },
+    error: {
+      main: errorColor
     }
   },
   fonts: {

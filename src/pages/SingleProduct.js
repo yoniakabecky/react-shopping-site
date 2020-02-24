@@ -1,15 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { withProductConsumer } from "../context/ProductContext";
 
 import Hero from "../components/layout/Hero";
 import Error from "./Error";
 import BodyContainer from "../components/layout/BodyContainer";
+import LinkButton from "../components/layout/LinkButton";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
-import Button from "@material-ui/core/Button";
 
 import defaultImage from "../images/productsHero.jpeg";
 
@@ -70,24 +69,8 @@ const SingleProduct = props => {
                 <h5 className={classes.price}>
                   $ {price} <span className={classes.priceTax}>(tax inc.)</span>
                 </h5>
-                <Link to="/products">
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    className={classes.btn}
-                  >
-                    back to list
-                  </Button>
-                </Link>
-                <Link to="/cart">
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    className={classes.btn}
-                  >
-                    add to cart
-                  </Button>
-                </Link>
+                <LinkButton link="/products" text="back to list" />
+                <LinkButton link="/cart" text="add to cart" color="secondary" />
               </Grid>
             </Grid>
           </Grid>
@@ -142,7 +125,7 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.text.secondary
   },
   btn: {
-    margin: "0 1rem"
+    margin: "1rem"
   }
 }));
 
