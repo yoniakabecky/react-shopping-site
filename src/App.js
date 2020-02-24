@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useLocation } from "react-router-dom";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import MyTheme from "./utils/theme";
 
@@ -16,6 +16,13 @@ import Footer from "./components/layout/Footer";
 const theme = createMuiTheme(MyTheme);
 
 function App() {
+  const location = useLocation();
+  const pathname = location.pathname;
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <ThemeProvider theme={theme}>
       <Navbar />
