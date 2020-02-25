@@ -11,8 +11,13 @@ const ProductList = ({ products, loading }) => {
   const classes = useStyles();
 
   if (products.length === 0) {
-    return <h3>unfortunately no products matched your search</h3>;
+    return (
+      <h3 style={{ textAlign: "center" }}>
+        unfortunately no products matched your search
+      </h3>
+    );
   }
+
   return (
     <div className={classes.sectionBody}>
       <Grid container spacing={3}>

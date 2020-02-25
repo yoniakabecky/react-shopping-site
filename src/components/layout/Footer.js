@@ -50,9 +50,6 @@ const useStyles = makeStyles(theme => ({
     fontSize: "0.8rem",
     color: theme.palette.text.secondary
   },
-  alignCenter: {
-    textAlign: "center"
-  },
   muiLink: {
     margin: "0 .5rem",
     "&:hover": {

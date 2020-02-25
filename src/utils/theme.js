@@ -48,6 +48,9 @@ export default {
       flexWrap: "wrap",
       justifyContent: "space-evenly",
       margin: "2rem auto 5rem auto"
+    },
+    alignCenter: {
+      textAlign: "center"
     }
   }
 };

@@ -18,7 +18,7 @@ const MakeYourOwn = ({ context }) => {
   return (
     <div className={classes.container}>
       <SectionTitle title="Make Your Own" />
-      <p className={classes.description}>
+      <p className={classes.alignCenter}>
         Do you want to make your own Macramé? Try our courses!!
       </p>
       <div className={classes.sectionBody}>
@@ -48,7 +48,8 @@ const MakeYourOwn = ({ context }) => {
               </CardContent>
               <CardActions>
                 <Link
-                  to={`/products/workshop${item.id}`}
+                  // to={`/workshops/workshop${item.id}`}
+                  to="/workshops"
                   className={classes.link}
                 >
                   <Button size="small">Learn More</Button>
@@ -64,9 +65,6 @@ const MakeYourOwn = ({ context }) => {
 
 const useStyles = makeStyles(theme => ({
   ...theme.global,
-  description: {
-    textAlign: "center"
-  },
   card: {
     maxWidth: "18rem",
     minWidth: "15rem",
