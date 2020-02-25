@@ -1,5 +1,5 @@
 import React, { Component, createContext } from "react";
-import { initialDataForWorkshops } from "../initialData";
+import { initialDataForWorkshops } from "../utils/initialData";
 
 export const WorkshopContext = createContext();
 

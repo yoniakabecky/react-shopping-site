@@ -19,14 +19,14 @@ const SingleProduct = props => {
     defaultImage
   });
 
-  const { getProductDetails } = props.context;
+  const { getProductDetails, addProductToCart } = props.context;
   const product = getProductDetails(state.path);
 
   if (!product) {
     return <Error />;
   }
 
-  const { name, price, description, inCart, images } = product;
+  const { id, name, price, description, inCart, images } = product;
   const [mainImage, ...otherImages] = images;
 
   return (
@@ -66,11 +66,14 @@ const SingleProduct = props => {
                 </div>
               </Grid>
               <Grid item className={classes.priceWrapper}>
-                <h5 className={classes.price}>
-                  $ {price} <span className={classes.priceTax}>(tax inc.)</span>
-                </h5>
+                <h5 className={classes.price}>$ {price}</h5>
                 <LinkButton link="/products" text="back to list" />
-                <LinkButton link="/cart" text="add to cart" color="secondary" />
+                <LinkButton
+                  link="/cart"
+                  color={inCart ? "default" : "secondary"}
+                  text={inCart ? "in cart" : "add to cart"}
+                  onClick={inCart ? null : () => addProductToCart(id)}
+                />
               </Grid>
             </Grid>
           </Grid>
@@ -117,9 +120,6 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     display: "inline-block",
     margin: "0 auto"
-  },
-  priceTax: {
-    fontSize: "0.8rem"
   },
   description: {
     color: theme.palette.text.secondary
