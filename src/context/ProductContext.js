@@ -1,5 +1,5 @@
 import React, { Component, createContext } from "react";
-import initialData from "../utils/initialData";
+import client from "../utils/contentful";
 
 export const ProductContext = createContext();
 
@@ -24,8 +24,18 @@ export default class ProductProvider extends Component {
     cartInvoiceTotal: 0
   };
 
-  getData = () => {
-    let products = this.formatData(initialData);
+  getData = async () => {
+    let contentfulData = await client
+      .getEntries({
+        content_type: "macrameProducts",
+        order: "fields.price"
+      })
+      .then(function(entries) {
+        return entries.items;
+      })
+      .catch(error => console.error(error));
+
+    let products = this.formatData(contentfulData);
     let featuredProducts = products.filter(
       product => product.featured === true
     );
@@ -50,6 +60,7 @@ export default class ProductProvider extends Component {
     this.getData();
   }
 
+  // products filter
   getUniqueItem = (items, value) => {
     return [...new Set(items.map(item => item[value]))];
   };
@@ -90,18 +101,7 @@ export default class ProductProvider extends Component {
   };
 
   resetFilter = () => {
-    let products = this.formatData(initialData);
-    let maxPrice = Math.max(...products.map(product => product.price));
-
-    this.setState(
-      {
-        category: "all",
-        price: [0, maxPrice],
-        sort: "price: low to high",
-        sortedProducts: products
-      },
-      this.filteredProducts
-    );
+    this.getData();
   };
 
   filteredProducts = () => {
