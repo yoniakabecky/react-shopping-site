@@ -1,6 +1,7 @@
 ## shopping site
 
 This is a e-commerce shop site for my friend.<br />
+https://macrameshop37.netlify.com
 
 ### skills
 
