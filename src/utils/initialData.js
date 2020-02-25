@@ -1,8 +1,8 @@
-import bag1 from "./images/bag1.jpeg";
-import bag2 from "./images/bag2.jpeg";
-import bag2Detail1 from "./images/bag2-detail1.jpeg";
-import bag3 from "./images/bag3.jpeg";
-import coaster1 from "./images/coaster1.jpeg";
+import bag1 from "../images/bag1.jpeg";
+import bag2 from "../images/bag2.jpeg";
+import bag2Detail1 from "../images/bag2-detail1.jpeg";
+import bag3 from "../images/bag3.jpeg";
+import coaster1 from "../images/coaster1.jpeg";
 
 export default [
   {
@@ -18,7 +18,7 @@ export default [
       description:
         "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
       inCart: false,
-      count: 0,
+      quantity: 0,
       total: 0,
       images: [
         {
@@ -44,7 +44,7 @@ export default [
       description:
         "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
       inCart: false,
-      count: 0,
+      quantity: 0,
       total: 0,
       images: [
         {
@@ -77,7 +77,7 @@ export default [
       description:
         "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
       inCart: false,
-      count: 0,
+      quantity: 0,
       total: 0,
       images: [
         {
@@ -103,7 +103,7 @@ export default [
       description:
         "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
       inCart: false,
-      count: 0,
+      quantity: 0,
       total: 0,
       images: [
         {
@@ -129,7 +129,7 @@ export default [
       description:
         "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
       inCart: false,
-      count: 0,
+      quantity: 0,
       total: 0,
       images: [
         {

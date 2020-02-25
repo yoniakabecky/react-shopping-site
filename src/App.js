@@ -11,6 +11,7 @@ import Cart from "./pages/Cart";
 import Error from "./pages/Error";
 import Workshops from "./pages/Workshops";
 import SingleWorkshop from "./pages/SingleWorkshop";
+import Checkout from "./pages/Checkout";
 import Footer from "./components/layout/Footer";
 
 const theme = createMuiTheme(MyTheme);
@@ -33,6 +34,7 @@ function App() {
         <Route exact path="/Workshops" component={Workshops} />
         <Route exact path="/Workshops/:type" component={SingleWorkshop} />
         <Route exact path="/cart" component={Cart} />
+        <Route exact path="/cart/checkout" component={Checkout} />
         <Route component={Error} />
       </Switch>
       <Footer />

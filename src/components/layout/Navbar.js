@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { withProductConsumer } from "../../context/ProductContext";
 
 import logo from "../../images/logo.png";
 
@@ -8,11 +9,15 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import IconButton from "@material-ui/core/IconButton";
+import Badge from "@material-ui/core/Badge";
 
-const Navbar = () => {
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+
+const Navbar = ({ context }) => {
   const classes = useStyles();
+  const { cart } = context;
+
   return (
     <div>
       <AppBar position="fixed">
@@ -50,7 +55,9 @@ const Navbar = () => {
             </Button>
           </div>
           <IconButton component={Link} to="/cart" color="inherit">
-            <ShoppingCartIcon />
+            <Badge badgeContent={cart.length} color="secondary" variant="dot">
+              <ShoppingCartIcon />
+            </Badge>
           </IconButton>
         </Toolbar>
       </AppBar>
@@ -76,4 +83,4 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default Navbar;
+export default withProductConsumer(Navbar);

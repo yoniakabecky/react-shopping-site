@@ -9,8 +9,9 @@ import IconButton from "@material-ui/core/IconButton";
 import AddIcon from "@material-ui/icons/AddBox";
 import MinusIcon from "@material-ui/icons/IndeterminateCheckBox";
 
-const CartList = ({ cart }) => {
+const CartList = ({ cart, context }) => {
   const classes = useStyles();
+  const { changeQty, removeProduct } = context;
 
   return (
     <div className={classes.listWrapper}>
@@ -34,7 +35,7 @@ const CartList = ({ cart }) => {
                     Qty:{" "}
                     <IconButton
                       color="primary"
-                      onClick={() => console.log("qty decreased")}
+                      onClick={() => changeQty(item.id, "decrease")}
                     >
                       <MinusIcon
                         fontSize="small"
@@ -44,7 +45,7 @@ const CartList = ({ cart }) => {
                     <span className={classes.qtyCount}>{item.count}</span>
                     <IconButton
                       color="primary"
-                      onClick={() => console.log("qty increased")}
+                      onClick={() => changeQty(item.id, "increase")}
                     >
                       <AddIcon fontSize="small" className={classes.qtyIcons} />
                     </IconButton>
@@ -68,7 +69,7 @@ const CartList = ({ cart }) => {
                     variant="body2"
                     color="textSecondary"
                     style={{ cursor: "pointer" }}
-                    onClick={() => console.log("item removed")}
+                    onClick={() => removeProduct(item.id)}
                   >
                     Remove
                   </Typography>

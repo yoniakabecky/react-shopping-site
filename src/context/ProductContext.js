@@ -1,7 +1,9 @@
 import React, { Component, createContext } from "react";
-import initialData from "../initialData";
+import initialData from "../utils/initialData";
 
 export const ProductContext = createContext();
+
+const TAX_RATE = 0.13;
 
 export default class ProductProvider extends Component {
   state = {
@@ -14,7 +16,12 @@ export default class ProductProvider extends Component {
     price: [0, 0],
     minPrice: 0,
     maxPrice: 0,
-    sort: "price: low to high"
+    sort: "price: low to high",
+    cart: [],
+    cartSubtotal: 0,
+    cartTax: 0,
+    taxRate: TAX_RATE,
+    cartInvoiceTotal: 0
   };
 
   getData = () => {
@@ -145,6 +152,89 @@ export default class ProductProvider extends Component {
     return tempProducts;
   };
 
+  // cart
+  getProductById = id => {
+    return this.state.products.find(item => item.id === id);
+  };
+
+  addProductToCart = id => {
+    let tempProducts = [...this.state.products];
+    const index = tempProducts.indexOf(this.getProductById(id));
+    const product = tempProducts[index];
+
+    product.inCart = true;
+    product.count = 1;
+    product.total = product.price;
+
+    this.setState(
+      {
+        products: tempProducts,
+        cart: [...this.state.cart, product]
+      },
+      () => this.calculateTotal()
+    );
+  };
+
+  changeQty = (id, change) => {
+    let tempCart = [...this.state.cart];
+    const selectedProduct = tempCart.find(item => item.id === id);
+    const index = tempCart.indexOf(selectedProduct);
+    const product = tempCart[index];
+
+    if (change === "increase") {
+      product.count = product.count + 1;
+    } else {
+      product.count = product.count - 1;
+    }
+
+    if (product.count === 0) {
+      this.removeProduct(id);
+    } else {
+      product.total = product.count * product.price;
+      this.setState(
+        {
+          cart: [...tempCart]
+        },
+        () => this.calculateTotal()
+      );
+    }
+  };
+
+  removeProduct = id => {
+    let tempProducts = [...this.state.products];
+    let tempCart = [...this.state.cart];
+
+    tempCart = tempCart.filter(item => item.id !== id);
+
+    const index = tempProducts.indexOf(this.getProductById(id));
+    let removedProduct = tempProducts[index];
+
+    removedProduct.inCart = false;
+    removedProduct.count = 0;
+    removedProduct.total = 0;
+
+    this.setState(
+      {
+        cart: [...tempCart],
+        products: [...tempProducts]
+      },
+      () => this.calculateTotal()
+    );
+  };
+
+  calculateTotal = () => {
+    let subtotal = 0;
+    this.state.cart.map(item => (subtotal += item.total));
+    const tax = parseFloat((subtotal * this.state.taxRate).toFixed(2));
+    const total = subtotal + tax;
+
+    this.setState({
+      cartSubtotal: subtotal,
+      cartTax: tax,
+      cartInvoiceTotal: total
+    });
+  };
+
   render() {
     return (
       <ProductContext.Provider
@@ -154,7 +244,10 @@ export default class ProductProvider extends Component {
           handlePriceSliderChange: this.handlePriceSliderChange,
           handlePriceInputChange: this.handlePriceInputChange,
           resetFilter: this.resetFilter,
-          getProductDetails: this.getProductDetails
+          getProductDetails: this.getProductDetails,
+          addProductToCart: this.addProductToCart,
+          changeQty: this.changeQty,
+          removeProduct: this.removeProduct
         }}
       >
         {this.props.children}
