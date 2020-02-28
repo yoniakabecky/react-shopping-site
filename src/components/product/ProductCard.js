@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
   ...theme.global,
   card: {
     width: "15rem",
-    margin: "1rem"
+    margin: "1rem auto"
   },
   image: {
     height: "10rem"

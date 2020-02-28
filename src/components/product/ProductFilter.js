@@ -62,41 +62,43 @@ const ProductFilter = ({ context }) => {
             className={classes.slider}
             max={maxPrice}
           />
-          <TextField
-            id="minPrice"
-            label="min price"
-            variant="outlined"
-            size="small"
-            color="secondary"
-            inputProps={{
-              step: 10,
-              min: minPrice,
-              max: maxPrice,
-              type: "number",
-              className: classes.input
-            }}
-            value={price[0]}
-            className={classes.textField}
-            onChange={handlePriceInputChange}
-          />
-          -
-          <TextField
-            id="maxPrice"
-            label="max price"
-            variant="outlined"
-            size="small"
-            color="secondary"
-            inputProps={{
-              step: 10,
-              min: minPrice,
-              max: maxPrice,
-              type: "number",
-              className: classes.input
-            }}
-            value={price[1]}
-            className={classes.textField}
-            onChange={handlePriceInputChange}
-          />
+          <div>
+            <TextField
+              id="minPrice"
+              label="min price"
+              variant="outlined"
+              size="small"
+              color="secondary"
+              inputProps={{
+                step: 10,
+                min: minPrice,
+                max: maxPrice,
+                type: "number",
+                className: classes.input
+              }}
+              value={price[0]}
+              className={classes.textField}
+              onChange={handlePriceInputChange}
+            />
+            -
+            <TextField
+              id="maxPrice"
+              label="max price"
+              variant="outlined"
+              size="small"
+              color="secondary"
+              inputProps={{
+                step: 10,
+                min: minPrice,
+                max: maxPrice,
+                type: "number",
+                className: classes.input
+              }}
+              value={price[1]}
+              className={classes.textField}
+              onChange={handlePriceInputChange}
+            />
+          </div>
         </div>
       </div>
       <FormControl color="secondary" className={classes.formControl}>
@@ -135,7 +137,10 @@ const useStyle = makeStyles(theme => ({
   filterWrapper: {
     textTransform: "capitalize",
     display: "flex",
-    flexDirection: "row",
+    [theme.breakpoints.up("md")]: {
+      flexDirection: "row"
+    },
+    flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-evenly",
     color: theme.palette.text.secondary,
@@ -143,7 +148,8 @@ const useStyle = makeStyles(theme => ({
   },
   formControl: {
     margin: theme.spacing(1),
-    minWidth: "11rem"
+    minWidth: "11rem",
+    width: "14rem"
   },
   menuItem: {
     textTransform: "capitalize",
@@ -162,7 +168,10 @@ const useStyle = makeStyles(theme => ({
   },
   priceInputWrapper: {
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
+    [theme.breakpoints.up("md")]: {
+      flexDirection: "row"
+    },
     alignItems: "center",
     color: theme.palette.text.secondary
   },
@@ -175,7 +184,8 @@ const useStyle = makeStyles(theme => ({
     color: theme.palette.text.secondary
   },
   resetBtn: {
-    height: "2.5rem"
+    height: "2.5rem",
+    margin: "1rem 0"
   }
 }));
 
