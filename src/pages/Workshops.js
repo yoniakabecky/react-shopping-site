@@ -13,7 +13,7 @@ const Workshops = () => {
         subtitle="let's make it together"
         img={heroImage}
       />
-      <div style={{ textAlign: "center" }}>
+      <div style={{ textAlign: "center", marginBottom: "3rem" }}>
         <h1>No available workshop at this moment.</h1>
         <LinkButton link="/" text="back to home" />
       </div>
