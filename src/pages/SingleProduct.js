@@ -66,7 +66,7 @@ const SingleProduct = props => {
                 </div>
               </Grid>
               <Grid item container spacing={2} justify="space-between">
-                <Grid item xs>
+                <Grid item md className={classes.priceWrapper}>
                   <h5 className={classes.price}>$ {price}</h5>
                 </Grid>
                 <Grid item className={classes.linkBtn}>
@@ -134,6 +134,9 @@ const useStyles = makeStyles(theme => ({
     objectFit: "cover"
   },
   linkBtn: {
+    margin: "0 auto"
+  },
+  priceWrapper: {
     margin: "0 auto"
   },
   price: {
