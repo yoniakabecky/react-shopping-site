@@ -26,7 +26,14 @@ const CartList = ({ cart, context }) => {
               />
             </Grid>
             <Grid item xs sm container>
-              <Grid item xs md container direction="column">
+              <Grid
+                item
+                xs
+                md
+                container
+                direction="column"
+                className={classes.detailWrapper}
+              >
                 <Grid item md className={classes.name}>
                   <Typography variant="h6">{item.name}</Typography>
                 </Grid>
@@ -102,8 +109,15 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center"
   },
   thumbnail: {
-    maxWidth: "10rem",
-    maxHeight: "7rem"
+    height: "6rem",
+    width: "6rem",
+    objectFit: "cover"
+  },
+  detailWrapper: {
+    textAlign: "center",
+    [theme.breakpoints.up("md")]: {
+      textAlign: "left"
+    }
   },
   name: {
     textTransform: "capitalize"

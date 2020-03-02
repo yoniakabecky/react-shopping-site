@@ -48,7 +48,9 @@ const useStyles = makeStyles(theme => ({
   ...theme.global,
   tableWrapper: {
     maxWidth: "25rem",
-    float: "right"
+    [theme.breakpoints.up("md")]: {
+      float: "right"
+    }
   },
   invoiceTotal: {
     color: theme.palette.error.main,
@@ -56,7 +58,7 @@ const useStyles = makeStyles(theme => ({
   },
   btnWrapper: {
     margin: "1rem auto",
-    float: "left"
+    textAlign: "center"
   }
 }));
 

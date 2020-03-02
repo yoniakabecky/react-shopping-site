@@ -163,7 +163,7 @@ const useStyle = makeStyles(theme => ({
     fontSize: "0.8rem"
   },
   slider: {
-    width: "10rem",
+    width: "11rem",
     marginRight: "0.5rem"
   },
   priceInputWrapper: {
