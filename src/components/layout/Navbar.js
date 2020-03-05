@@ -60,11 +60,11 @@ const Navbar = ({ context }) => {
     <>
       <AppBar position="fixed">
         <Toolbar className={classes.container}>
-          <div className={classes.desktopMenu}>
+          <menu className={classes.desktopMenu}>
             <Link to="/">
               <img src={logo} alt="home" className={classes.logo} />
             </Link>
-            <Typography variant="h4" className={classes.storeName}>
+            <Typography variant="h1" className={classes.storeName}>
               Macramé Shop 37
             </Typography>
 
@@ -79,7 +79,7 @@ const Navbar = ({ context }) => {
                 {item.menu}
               </Button>
             ))}
-          </div>
+          </menu>
           <IconButton
             color="inherit"
             className={classes.mobileMenu}
@@ -115,6 +115,7 @@ const useStyles = makeStyles(theme => ({
   },
   storeName: {
     ...theme.fonts.title,
+    fontSize: "2rem",
     marginRight: "4rem"
   },
   menuBtn: {
@@ -124,7 +125,8 @@ const useStyles = makeStyles(theme => ({
     display: "none",
     [theme.breakpoints.up("md")]: {
       display: "flex"
-    }
+    },
+    margin: "0 auto"
   },
   mobileMenu: {
     display: "flex",

@@ -21,7 +21,7 @@ const Cart = ({ context }) => {
 
   return (
     <BodyContainer>
-      <div className={classes.container}>
+      <section className={classes.container}>
         <SectionTitle title="your cart" />
         {cart.length > 0 ? (
           <>
@@ -31,7 +31,7 @@ const Cart = ({ context }) => {
         ) : (
           <EmptyCart />
         )}
-      </div>
+      </section>
     </BodyContainer>
   );
 };

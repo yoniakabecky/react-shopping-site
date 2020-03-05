@@ -19,7 +19,7 @@ const ProductList = ({ products, loading }) => {
   }
 
   return (
-    <div className={classes.sectionBody}>
+    <section className={classes.sectionBody}>
       <Grid container spacing={3}>
         {loading ? (
           <CircularProgress color="secondary" size="4rem" />
@@ -31,7 +31,7 @@ const ProductList = ({ products, loading }) => {
           ))
         )}
       </Grid>
-    </div>
+    </section>
   );
 };
 

@@ -12,10 +12,10 @@ const FeaturedProducts = ({ context }) => {
   const { loading, featuredProducts } = context;
 
   return (
-    <div className={classes.container}>
+    <article className={classes.container}>
       <SectionTitle title="Featured Products" />
       <ProductList products={featuredProducts} loading={loading} />
-    </div>
+    </article>
   );
 };
 

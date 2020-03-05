@@ -18,11 +18,11 @@ const Products = ({ context }) => {
   return (
     <BodyContainer>
       <Hero title="our products" img={heroImage} />
-      <div className={classes.container}>
+      <article className={classes.container}>
         <SectionTitle title="search products" />
         <ProductFilter products={sortedProducts} />
         <ProductList products={sortedProducts} loading={loading} />
-      </div>
+      </article>
     </BodyContainer>
   );
 };
