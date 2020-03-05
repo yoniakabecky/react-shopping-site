@@ -57,48 +57,46 @@ const Navbar = ({ context }) => {
   );
 
   return (
-    <>
-      <AppBar position="fixed">
-        <Toolbar className={classes.container}>
-          <menu className={classes.desktopMenu}>
-            <Link to="/">
-              <img src={logo} alt="home" className={classes.logo} />
-            </Link>
-            <Typography variant="h1" className={classes.storeName}>
-              Macramé Shop 37
-            </Typography>
+    <AppBar position="fixed">
+      <Toolbar className={classes.container}>
+        <menu className={classes.desktopMenu}>
+          <Link to="/">
+            <img src={logo} alt="home" className={classes.logo} />
+          </Link>
+          <Typography variant="h1" className={classes.storeName}>
+            Macramé Shop 37
+          </Typography>
 
-            {menuItem.map((item, index) => (
-              <Button
-                component={Link}
-                to={item.link}
-                color="inherit"
-                className={classes.menuBtn}
-                key={index}
-              >
-                {item.menu}
-              </Button>
-            ))}
-          </menu>
-          <IconButton
-            color="inherit"
-            className={classes.mobileMenu}
-            onClick={() => setOpen(true)}
-          >
-            <MenuIcon />
-          </IconButton>
+          {menuItem.map((item, index) => (
+            <Button
+              component={Link}
+              to={item.link}
+              color="inherit"
+              className={classes.menuBtn}
+              key={index}
+            >
+              {item.menu}
+            </Button>
+          ))}
+        </menu>
+        <IconButton
+          color="inherit"
+          className={classes.mobileMenu}
+          onClick={() => setOpen(true)}
+        >
+          <MenuIcon />
+        </IconButton>
 
-          <div className={classes.grow} />
+        <div className={classes.grow} />
 
-          <IconButton component={Link} to="/cart" color="inherit">
-            <Badge badgeContent={cart.length} color="secondary" variant="dot">
-              <ShoppingCartIcon />
-            </Badge>
-          </IconButton>
-        </Toolbar>
-      </AppBar>
+        <IconButton component={Link} to="/cart" color="inherit">
+          <Badge badgeContent={cart.length} color="secondary" variant="dot">
+            <ShoppingCartIcon />
+          </Badge>
+        </IconButton>
+      </Toolbar>
       {mobileMenu}
-    </>
+    </AppBar>
   );
 };
 
