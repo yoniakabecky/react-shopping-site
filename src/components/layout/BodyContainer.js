@@ -5,7 +5,7 @@ const styles = {
 };
 
 const BodyContainer = ({ children }) => {
-  return <div style={styles}>{children}</div>;
+  return <main style={styles}>{children}</main>;
 };
 
 export default BodyContainer;

@@ -33,21 +33,21 @@ const About = () => {
 
   return (
     <div className={classes.backgroundColor}>
-      <div className={classes.container}>
+      <article className={classes.container}>
         <SectionTitle title="about" />
 
         <div className={classes.sectionBody}>
           {contents.map((content, index) => (
-            <div className={classes.contentsWrapper} key={index}>
+            <section className={classes.contentsWrapper} key={index}>
               {content.icon}
               <Typography variant="h5" className={classes.contentsTitle}>
                 {content.title}
               </Typography>
               <p>{content.body}</p>
-            </div>
+            </section>
           ))}
         </div>
-      </div>
+      </article>
     </div>
   );
 };

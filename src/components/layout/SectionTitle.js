@@ -11,7 +11,7 @@ const SectionTitle = ({ title }) => {
       <Typography variant="h3" className={classes.title}>
         {title}
       </Typography>
-      <hr className={classes.hr} />
+      <div className={classes.hr} />
     </>
   );
 };

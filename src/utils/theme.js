@@ -30,7 +30,8 @@ export default {
       width: "5rem",
       height: 2,
       border: "none",
-      background: secondaryColor
+      background: secondaryColor,
+      margin: "0 auto"
     },
     container: {
       width: "95vw",

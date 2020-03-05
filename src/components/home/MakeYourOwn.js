@@ -16,12 +16,12 @@ const MakeYourOwn = ({ context }) => {
   const { workshops, availableWorkshops, loading } = context;
 
   return (
-    <div className={classes.container}>
+    <article className={classes.container}>
       <SectionTitle title="Make Your Own" />
       <p className={classes.alignCenter}>
         Do you want to make your own Macramé? Try our courses!!
       </p>
-      <div className={classes.sectionBody}>
+      <section className={classes.sectionBody}>
         {loading ? (
           <CircularProgress color="secondary" size="4rem" />
         ) : (
@@ -58,8 +58,8 @@ const MakeYourOwn = ({ context }) => {
             </Card>
           ))
         )}
-      </div>
-    </div>
+      </section>
+    </article>
   );
 };
 

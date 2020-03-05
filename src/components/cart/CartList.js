@@ -14,7 +14,7 @@ const CartList = ({ cart, context }) => {
   const { changeQty, removeProduct } = context;
 
   return (
-    <div className={classes.listWrapper}>
+    <section className={classes.listWrapper}>
       {cart.map(item => (
         <Paper key={item.id} className={classes.paper}>
           <Grid container className={classes.gridWrapper}>
@@ -86,7 +86,7 @@ const CartList = ({ cart, context }) => {
           </Grid>
         </Paper>
       ))}
-    </div>
+    </section>
   );
 };
 

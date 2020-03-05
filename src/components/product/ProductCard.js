@@ -25,7 +25,7 @@ const ProductCard = ({ product }) => {
           />
           <CardContent className={classes.cardWrapper}>
             <h4 className={classes.name}>{name}</h4>
-            <h4 className={classes.price}>$ {price}</h4>
+            <p className={classes.price}>$ {price}</p>
           </CardContent>
         </CardActionArea>
       </Card>
@@ -51,7 +51,8 @@ const useStyles = makeStyles(theme => ({
     textTransform: "capitalize"
   },
   price: {
-    float: "right"
+    float: "right",
+    margin: "1.3rem auto"
   }
 }));
 

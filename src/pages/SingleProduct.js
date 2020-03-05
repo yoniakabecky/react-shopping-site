@@ -32,7 +32,7 @@ const SingleProduct = props => {
   return (
     <BodyContainer>
       <Hero title={name} img={images[0]} />
-      <div className={classes.container}>
+      <article className={classes.container}>
         <Grid container spacing={2}>
           <Grid item>
             <Card className={classes.mainImageWrapper}>
@@ -67,7 +67,7 @@ const SingleProduct = props => {
               </Grid>
               <Grid item container spacing={2} justify="space-between">
                 <Grid item md className={classes.priceWrapper}>
-                  <h5 className={classes.price}>$ {price}</h5>
+                  <p className={classes.price}>$ {price}</p>
                 </Grid>
                 <Grid item className={classes.linkBtn}>
                   <LinkButton link="/products" text="back to list" />
@@ -82,7 +82,7 @@ const SingleProduct = props => {
             </Grid>
           </Grid>
         </Grid>
-      </div>
+      </article>
     </BodyContainer>
   );
 };
@@ -143,7 +143,9 @@ const useStyles = makeStyles(theme => ({
     fontSize: "1.5rem",
     flexGrow: 1,
     display: "inline-block",
-    margin: "0 auto"
+    margin: "0 auto",
+    lineHeight: "3rem",
+    fontWeight: "bold"
   },
   description: {
     color: theme.palette.text.secondary

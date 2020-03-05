@@ -19,17 +19,17 @@ const Hero = ({ img, title, subtitle, full }) => {
   const classes = useStyles();
   return (
     <StyledHero img={img} full={full}>
-      <div className={classes.wrapper}>
-        <h3 className={classes.title}>{title}</h3>
+      <section className={classes.wrapper}>
+        <h2 className={classes.title}>{title}</h2>
         {subtitle ? (
           <>
-            <hr className={classes.hr} />
+            <div className={classes.hr} />
             <h4 className={classes.subtitle}>{subtitle}</h4>
           </>
         ) : (
           ""
         )}
-      </div>
+      </section>
     </StyledHero>
   );
 };

@@ -17,7 +17,7 @@ const Footer = () => {
   const thisYear = new Date().getFullYear();
 
   return (
-    <div className={classes.footerWrapper}>
+    <footer className={classes.footerWrapper}>
       <div className={classes.alignCenter}>
         {socialIcons.map((item, index) => (
           <MuiLink
@@ -33,7 +33,7 @@ const Footer = () => {
 
         <p className={classes.copyright}>©{thisYear} Macramé Shop 37</p>
       </div>
-    </div>
+    </footer>
   );
 };
 

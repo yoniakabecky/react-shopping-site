@@ -36,7 +36,7 @@ const ProductFilter = ({ context }) => {
   });
 
   return (
-    <div className={classes.filterWrapper}>
+    <section className={classes.filterWrapper}>
       <FormControl color="secondary" className={classes.formControl}>
         <InputLabel>category</InputLabel>
         <Select
@@ -128,7 +128,7 @@ const ProductFilter = ({ context }) => {
       >
         reset all
       </Button>
-    </div>
+    </section>
   );
 };
 
