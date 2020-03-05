@@ -18,7 +18,7 @@ const Footer = () => {
 
   return (
     <footer className={classes.footerWrapper}>
-      <div className={classes.alignCenter}>
+      <div className={classes.iconWrapper}>
         {socialIcons.map((item, index) => (
           <MuiLink
             href={item.href}
@@ -30,9 +30,8 @@ const Footer = () => {
             {item.icon}
           </MuiLink>
         ))}
-
-        <p className={classes.copyright}>©{thisYear} Macramé Shop 37</p>
       </div>
+      <small className={classes.copyright}>©{thisYear} Macramé Shop 37</small>
     </footer>
   );
 };
@@ -44,14 +43,17 @@ const useStyles = makeStyles(theme => ({
     paddingTop: "1rem",
     minHeight: "5rem",
     flexShrink: 0,
-    background: theme.palette.primary.light
+    background: theme.palette.primary.light,
+    textAlign: "center"
   },
   copyright: {
-    fontSize: "0.8rem",
     color: theme.palette.text.secondary
   },
+  iconWrapper: {
+    margin: "0.5rem auto"
+  },
   muiLink: {
-    margin: "0 .5rem",
+    margin: "0.5rem",
     "&:hover": {
       color: theme.palette.primary.dark
     }

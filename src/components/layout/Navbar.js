@@ -125,7 +125,8 @@ const useStyles = makeStyles(theme => ({
     display: "none",
     [theme.breakpoints.up("md")]: {
       display: "flex"
-    }
+    },
+    margin: "0 auto"
   },
   mobileMenu: {
     display: "flex",
