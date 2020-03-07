@@ -4,84 +4,108 @@ import { withProductConsumer } from "../context/ProductContext";
 import Hero from "../components/layout/Hero";
 import Error from "./Error";
 import BodyContainer from "../components/layout/BodyContainer";
-import LinkButton from "../components/layout/LinkButton";
+import ProductImagePane from "../components/product/ProductImagePane";
+import ProductDetailsPane from "../components/product/ProductDetailsPane";
+import ShoppingPane from "../components/product/ShoppingPane";
+import ProductImageModal from "../components/product/ProductImageModal";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import Card from "@material-ui/core/Card";
-
-import defaultImage from "../images/productsHero.jpeg";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const SingleProduct = props => {
   const classes = useStyles();
-  const [state, setState] = React.useState({
-    path: props.match.params.type,
-    defaultImage
+  const isDesktop = useMediaQuery(theme => theme.breakpoints.up("md"));
+
+  const path = props.match.params.type;
+  const [showImage, setShowImage] = React.useState(null);
+  const [modal, setModal] = React.useState({
+    open: false,
+    image: null,
+    leftClick: false,
+    rightClick: false
   });
 
   const { getProductDetails, addProductToCart } = props.context;
-  const product = getProductDetails(state.path);
+  const product = getProductDetails(path);
 
   if (!product) {
     return <Error />;
   }
 
   const { id, name, price, description, inCart, images } = product;
-  // const [mainImage, ...otherImages] = images;
+  const mainImage = images[0];
+
+  const selectImage = index => {
+    if (isDesktop) {
+      setShowImage(images[index]);
+    } else {
+      setModalImage(index);
+    }
+  };
+
+  const setModalImage = index => {
+    const [leftClick, rightClick] = checkIndex(index);
+    setModal({
+      open: true,
+      index: index,
+      leftClick,
+      rightClick
+    });
+  };
+
+  const changeImage = direction => {
+    let tempIndex = modal.index;
+    direction === "right" ? tempIndex++ : tempIndex--;
+    setModalImage(tempIndex);
+  };
+
+  const checkIndex = index => {
+    const numOfImages = images.length;
+    let tempLeft = true;
+    let tempRight = true;
+    if (index <= 0) tempLeft = false;
+    if (index >= numOfImages - 1) tempRight = false;
+    return [tempLeft, tempRight];
+  };
+
+  const handleClose = () => {
+    setModal({
+      open: false
+    });
+  };
 
   return (
     <BodyContainer>
-      <Hero title={name} img={images[0]} />
+      <Hero title={name} img={mainImage} />
       <article className={classes.container}>
         <Grid container spacing={2}>
           <Grid item>
-            <Card className={classes.mainImageWrapper}>
-              <img
-                src={images[0]}
-                alt="product main"
-                className={classes.mainImage}
-              />
-            </Card>
+            <ProductImagePane img={showImage ? showImage : mainImage} />
           </Grid>
-          <Grid
-            item
-            xs={12}
-            sm
-            container
-            className={classes.descriptionWrapper}
-          >
-            <Grid item xs container direction="column">
-              <Grid item xs>
-                <h2 className={classes.productTitle}>{name}</h2>
-                <p className={classes.description}>{description}</p>
-                <div className={classes.imagesWrapper}>
-                  {images.map(image => (
-                    <img
-                      key={image}
-                      src={image}
-                      alt="product"
-                      className={classes.image}
-                    />
-                  ))}
-                </div>
-              </Grid>
-              <Grid item container spacing={2} justify="space-between">
-                <Grid item md className={classes.priceWrapper}>
-                  <p className={classes.price}>$ {price}</p>
-                </Grid>
-                <Grid item className={classes.linkBtn}>
-                  <LinkButton link="/products" text="back to list" />
-                  <LinkButton
-                    link="/cart"
-                    color={inCart ? "default" : "secondary"}
-                    text={inCart ? "in cart" : "add to cart"}
-                    onClick={inCart ? null : () => addProductToCart(id)}
-                  />
-                </Grid>
-              </Grid>
-            </Grid>
+          <Grid item xs={12} sm container className={classes.rightPane}>
+            <ProductDetailsPane
+              name={name}
+              description={description}
+              images={images}
+              selectImage={selectImage}
+            />
+            <ShoppingPane
+              price={price}
+              isInCart={inCart}
+              addProductToCart={addProductToCart}
+              id={id}
+            />
           </Grid>
         </Grid>
+        {isDesktop ? null : (
+          <ProductImageModal
+            modal={modal}
+            image={images[modal.index]}
+            changeImage={changeImage}
+            handleClose={handleClose}
+          />
+        )}
       </article>
     </BodyContainer>
   );
@@ -93,65 +117,18 @@ const useStyles = makeStyles(theme => ({
     ...theme.global.container,
     margin: "2rem auto"
   },
-  mainImageWrapper: {
-    height: "25rem",
-    width: "20rem",
-    margin: "1rem",
-    textAlign: "center",
-    position: "relative",
-    background: "rgba(200, 200, 200, 0.5)",
-    display: "none",
-    [theme.breakpoints.up("md")]: {
-      display: "block"
-    }
-  },
-  mainImage: {
-    display: "block",
-    width: "100%",
-    borderRadius: "0.5rem",
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)"
-  },
-  productTitle: {
-    textTransform: "capitalize"
-  },
-  descriptionWrapper: {
-    margin: "0rem 1rem 3rem 1rem",
+  rightPane: {
+    margin: "0 1rem",
     textAlign: "center",
     [theme.breakpoints.up("md")]: {
       textAlign: "left"
-    }
-  },
-  imagesWrapper: {
-    marginBottom: "2rem"
-  },
-  image: {
-    height: "6rem",
-    width: "6rem",
-    margin: "0.5rem",
-    objectFit: "cover"
+    },
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between"
   },
   linkBtn: {
     margin: "0 auto"
-  },
-  priceWrapper: {
-    margin: "0 auto"
-  },
-  price: {
-    fontSize: "1.5rem",
-    flexGrow: 1,
-    display: "inline-block",
-    margin: "0 auto",
-    lineHeight: "3rem",
-    fontWeight: "bold"
-  },
-  description: {
-    color: theme.palette.text.secondary
-  },
-  btn: {
-    margin: "1rem"
   }
 }));
 
