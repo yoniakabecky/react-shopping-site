@@ -18,10 +18,12 @@ export default class ProductProvider extends Component {
     maxPrice: 0,
     sort: "price: low to high",
     cart: [],
-    cartSubtotal: 0,
-    cartTax: 0,
-    taxRate: TAX_RATE,
-    cartInvoiceTotal: 0
+    cartTotal: {
+      cartSubtotal: 0,
+      cartTax: 0,
+      taxRate: TAX_RATE,
+      cartInvoiceTotal: 0
+    }
   };
 
   getData = async () => {
@@ -225,13 +227,18 @@ export default class ProductProvider extends Component {
   calculateTotal = () => {
     let subtotal = 0;
     this.state.cart.map(item => (subtotal += item.total));
-    const tax = parseFloat((subtotal * this.state.taxRate).toFixed(2));
+    const tax = parseFloat(
+      (subtotal * this.state.cartTotal.taxRate).toFixed(2)
+    );
     const total = subtotal + tax;
 
     this.setState({
-      cartSubtotal: subtotal,
-      cartTax: tax,
-      cartInvoiceTotal: total
+      cartTotal: {
+        ...this.state.cartTotal,
+        cartSubtotal: subtotal,
+        cartTax: tax,
+        cartInvoiceTotal: total
+      }
     });
   };
 
