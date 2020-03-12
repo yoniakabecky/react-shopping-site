@@ -9,10 +9,10 @@ const CartProductCard = ({ children, cart }) => {
   const classes = useStyles();
 
   return (
-    <section className={classes.listWrapper}>
+    <section className={classes.sectionWrapper}>
       {cart.map(item => (
         <Paper key={item.id} className={classes.paper}>
-          <Grid container className={classes.gridWrapper}>
+          <Grid container className={classes.gridContainer}>
             <Grid item xs={12} sm={2} className={classes.thumbnailWrapper}>
               <img
                 src={item.images[0]}
@@ -27,12 +27,16 @@ const CartProductCard = ({ children, cart }) => {
               direction="column"
               className={classes.detailWrapper}
             >
-              <Grid item sm container>
-                <Grid item xs={12} sm className={classes.name}>
+              <Grid item xs sm container>
+                <Grid item xs={12} sm className={classes.gridItem}>
                   <Typography variant="h6">{item.name}</Typography>
                 </Grid>
-                <Grid item xs={12} sm={1}>
-                  <Typography variant="body1" color="error">
+                <Grid item xs={12} sm={1} className={classes.gridItem}>
+                  <Typography
+                    variant="body1"
+                    color="secondary"
+                    style={{ textAlign: "center" }}
+                  >
                     ${item.price}
                   </Typography>
                 </Grid>
@@ -50,14 +54,18 @@ const CartProductCard = ({ children, cart }) => {
 
 const useStyles = makeStyles(theme => ({
   ...theme.global,
-  listWrapper: {
+  sectionWrapper: {
     marginTop: "1rem"
   },
   paper: {
     margin: "1rem auto"
   },
-  gridWrapper: {
+  gridContainer: {
     padding: "0.5rem"
+  },
+  gridItem: {
+    alignSelf: "center",
+    textTransform: "capitalize"
   },
   thumbnailWrapper: {
     height: "7rem",
@@ -75,7 +83,8 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center",
     [theme.breakpoints.up("sm")]: {
       textAlign: "left"
-    }
+    },
+    alignItems: "center"
   },
   name: {
     textTransform: "capitalize"

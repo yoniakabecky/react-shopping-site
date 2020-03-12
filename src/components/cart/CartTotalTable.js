@@ -13,7 +13,7 @@ const CartTotalTable = ({ cartTotal }) => {
   const formatPrice = price => `${price.toFixed(2)}`;
 
   return (
-    <Table>
+    <Table className={classes.table}>
       <TableBody>
         <TableRow>
           <TableCell colSpan={2}>Subtotal</TableCell>
@@ -42,6 +42,9 @@ const useStyles = makeStyles(theme => ({
   invoiceTotal: {
     color: theme.palette.error.main,
     fontWeight: "bold"
+  },
+  table: {
+    minWidth: "20rem"
   }
 }));
 

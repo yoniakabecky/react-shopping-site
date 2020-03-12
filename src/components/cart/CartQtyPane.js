@@ -12,7 +12,7 @@ const CartQtyPane = ({ item, changeQty, removeProduct }) => {
   const classes = useStyles();
   return (
     <>
-      <Grid item xs={12} sm className={classes.qtyWrapper}>
+      <Grid item xs={12} sm className={classes.gridItem}>
         <Typography variant="body1" color="primary">
           Qty:{" "}
           <IconButton
@@ -30,11 +30,11 @@ const CartQtyPane = ({ item, changeQty, removeProduct }) => {
           </IconButton>
         </Typography>
       </Grid>
-      <Grid item xs={12} sm={1} md={1}>
+      <Grid item xs={12} sm={1} md={1} className={classes.gridItem}>
         <Typography
           variant="body2"
           color="textSecondary"
-          style={{ cursor: "pointer" }}
+          className={classes.removeBtn}
           onClick={() => removeProduct(item.id)}
         >
           Remove
@@ -46,14 +46,18 @@ const CartQtyPane = ({ item, changeQty, removeProduct }) => {
 
 const useStyles = makeStyles(theme => ({
   ...theme.global,
-  qtyWrapper: {
-    marginBottom: "-0.5rem"
+  gridItem: {
+    alignSelf: "center"
   },
   qtyIcons: {
     marginBottom: "0.2rem"
   },
   qtyCount: {
     fontSize: "1.2rem"
+  },
+  removeBtn: {
+    cursor: "pointer",
+    textAlign: "center"
   }
 }));
 
