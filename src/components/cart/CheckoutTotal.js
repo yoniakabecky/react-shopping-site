@@ -4,15 +4,15 @@ import CartTotalTable from "./CartTotalTable";
 
 import { makeStyles } from "@material-ui/core/styles";
 
-const CartTotal = ({ cartTotal }) => {
+const CheckoutTotal = ({ cartTotal }) => {
   const classes = useStyles();
 
   return (
     <div className={classes.tableWrapper}>
       <CartTotalTable cartTotal={cartTotal} />
       <div className={classes.btnWrapper}>
-        <LinkButton link="/products" text="back to products" />
-        <LinkButton link="/cart/checkout" text="checkout" color="secondary" />
+        <LinkButton link="/cart" text="cancel" color="default" />
+        <span>PayPal Btn</span>
       </div>
     </div>
   );
@@ -32,4 +32,4 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default CartTotal;
+export default CheckoutTotal;

@@ -3,21 +3,16 @@ import { withProductConsumer } from "../context/ProductContext";
 
 import BodyContainer from "../components/layout/BodyContainer";
 import SectionTitle from "../components/layout/SectionTitle";
-import CartList from "../components/cart/CartList";
+import CartList from "../components/cart/CartProductCard";
 import CartTotal from "../components/cart/CartTotal";
 import EmptyCart from "../components/cart/EmptyCart";
 
 import { makeStyles } from "@material-ui/core/styles";
+import CartQtyPane from "../components/cart/CartQtyPane";
 
 const Cart = ({ context }) => {
   const classes = useStyles();
-  const { cart, cartSubtotal, cartTax, cartInvoiceTotal, taxRate } = context;
-  const cartTotal = {
-    cartSubtotal,
-    cartTax,
-    cartInvoiceTotal,
-    taxRate
-  };
+  const { cart, cartTotal, changeQty, removeProduct } = context;
 
   return (
     <BodyContainer>
@@ -25,7 +20,15 @@ const Cart = ({ context }) => {
         <SectionTitle title="your cart" />
         {cart.length > 0 ? (
           <>
-            <CartList cart={cart} context={context} />
+            <CartList
+              cart={cart}
+              children={
+                <CartQtyPane
+                  changeQty={changeQty}
+                  removeProduct={removeProduct}
+                />
+              }
+            />
             <CartTotal cartTotal={cartTotal} />
           </>
         ) : (
