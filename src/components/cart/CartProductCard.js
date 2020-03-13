@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
+import { Link } from "react-router-dom";
 
 const CartProductCard = ({ children, cart }) => {
   const classes = useStyles();
@@ -29,7 +30,9 @@ const CartProductCard = ({ children, cart }) => {
             >
               <Grid item xs sm container>
                 <Grid item xs={12} sm className={classes.gridItem}>
-                  <Typography variant="h6">{item.name}</Typography>
+                  <Link to={`/products/${item.path}`}>
+                    <Typography variant="h6">{item.name}</Typography>
+                  </Link>
                 </Grid>
                 <Grid item xs={12} sm={1} className={classes.gridItem}>
                   <Typography
