@@ -13,11 +13,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
-const SingleProduct = props => {
+const SingleProduct = ({ match, context }) => {
   const classes = useStyles();
   const isDesktop = useMediaQuery(theme => theme.breakpoints.up("md"));
 
-  const path = props.match.params.type;
+  const path = match.params.type;
   const [showImage, setShowImage] = React.useState(null);
   const [modal, setModal] = React.useState({
     open: false,
@@ -26,7 +26,7 @@ const SingleProduct = props => {
     rightClick: false
   });
 
-  const { getProductDetails, addProductToCart } = props.context;
+  const { getProductDetails, addProductToCart } = context;
   const product = getProductDetails(path);
 
   if (!product) {

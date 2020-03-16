@@ -1,4 +1,6 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
+
 import { withProductConsumer } from "../context/ProductContext";
 import BodyContainer from "../components/layout/BodyContainer";
 import SectionTitle from "../components/layout/SectionTitle";
@@ -22,8 +24,7 @@ const Checkout = ({ context }) => {
             <CheckoutTotal cartTotal={cartTotal} />
           </>
         ) : (
-          // TODO: Redirect to Cart Page
-          <h1 style={{ textAlign: "center" }}>Sorry Still in Progress</h1>
+          <Redirect to="/cart" />
         )}
       </div>
     </BodyContainer>
