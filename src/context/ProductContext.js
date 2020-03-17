@@ -242,6 +242,18 @@ export default class ProductProvider extends Component {
     });
   };
 
+  clearCart = () => {
+    this.setState({
+      cart: [],
+      cartTotal: {
+        cartSubtotal: 0,
+        cartTax: 0,
+        taxRate: TAX_RATE,
+        cartInvoiceTotal: 0
+      }
+    });
+  };
+
   render() {
     return (
       <ProductContext.Provider
@@ -254,7 +266,8 @@ export default class ProductProvider extends Component {
           getProductDetails: this.getProductDetails,
           addProductToCart: this.addProductToCart,
           changeQty: this.changeQty,
-          removeProduct: this.removeProduct
+          removeProduct: this.removeProduct,
+          clearCart: this.clearCart
         }}
       >
         {this.props.children}

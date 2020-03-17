@@ -41,10 +41,11 @@ const useStyles = makeStyles(theme => ({
   ...theme.global,
   invoiceTotal: {
     color: theme.palette.error.main,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    fontSize: "1.1rem"
   },
   table: {
-    minWidth: "20rem"
+    width: "100%"
   }
 }));
 

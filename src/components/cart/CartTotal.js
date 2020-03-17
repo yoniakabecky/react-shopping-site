@@ -21,14 +21,22 @@ const CartTotal = ({ cartTotal }) => {
 const useStyles = makeStyles(theme => ({
   ...theme.global,
   tableWrapper: {
-    maxWidth: "25rem",
-    [theme.breakpoints.up("md")]: {
-      float: "right"
+    maxWidth: "30rem",
+    minWidth: "20rem",
+    [theme.breakpoints.up("sm")]: {
+      float: "right",
+      width: "27vw"
     }
   },
   btnWrapper: {
     margin: "1rem auto",
-    textAlign: "center"
+    display: "flex",
+    flexDirection: "column",
+    [theme.breakpoints.up("md")]: {
+      flexDirection: "row"
+    },
+    alignItems: "center",
+    justifyContent: "space-around"
   }
 }));
 
