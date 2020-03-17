@@ -1,16 +1,18 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
+
 import { withProductConsumer } from "../context/ProductContext";
 import BodyContainer from "../components/layout/BodyContainer";
 import SectionTitle from "../components/layout/SectionTitle";
 import CartProductCard from "../components/cart/CartProductCard";
 import CheckoutQtyPane from "../components/cart/CheckoutQtyPane";
+import CheckoutTotal from "../components/cart/CheckoutTotal";
 
 import { makeStyles } from "@material-ui/core/styles";
-import CheckoutTotal from "../components/cart/CheckoutTotal";
 
 const Checkout = ({ context }) => {
   const classes = useStyles();
-  const { cart, cartTotal } = context;
+  const { cart, cartTotal, clearCart } = context;
 
   return (
     <BodyContainer>
@@ -19,11 +21,10 @@ const Checkout = ({ context }) => {
         {cart.length > 0 ? (
           <>
             <CartProductCard cart={cart} children={<CheckoutQtyPane />} />
-            <CheckoutTotal cartTotal={cartTotal} />
+            <CheckoutTotal cartTotal={cartTotal} clearCart={clearCart} />
           </>
         ) : (
-          // TODO: Redirect to Cart Page
-          <h1 style={{ textAlign: "center" }}>Sorry Still in Progress</h1>
+          <Redirect to="/cart" />
         )}
       </div>
     </BodyContainer>

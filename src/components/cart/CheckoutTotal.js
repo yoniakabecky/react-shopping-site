@@ -1,10 +1,13 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
+
 import LinkButton from "../layout/LinkButton";
 import CartTotalTable from "./CartTotalTable";
+import PayPalBtn from "./PayPalButton";
 
 import { makeStyles } from "@material-ui/core/styles";
 
-const CheckoutTotal = ({ cartTotal }) => {
+const CheckoutTotal = ({ cartTotal, clearCart, history }) => {
   const classes = useStyles();
 
   return (
@@ -12,7 +15,13 @@ const CheckoutTotal = ({ cartTotal }) => {
       <CartTotalTable cartTotal={cartTotal} />
       <div className={classes.btnWrapper}>
         <LinkButton link="/cart" text="cancel" color="default" />
-        <span>PayPal Btn</span>
+        <span style={{ margin: "1rem" }}>
+          <PayPalBtn
+            total={cartTotal.cartInvoiceTotal}
+            clearCart={clearCart}
+            history={history}
+          />
+        </span>
       </div>
     </div>
   );
@@ -22,14 +31,22 @@ const useStyles = makeStyles(theme => ({
   ...theme.global,
   tableWrapper: {
     maxWidth: "25rem",
-    [theme.breakpoints.up("md")]: {
-      float: "right"
+    minWidth: "20rem",
+    [theme.breakpoints.up("sm")]: {
+      float: "right",
+      width: "27vw"
     }
   },
   btnWrapper: {
     margin: "1rem auto",
-    textAlign: "center"
+    display: "flex",
+    flexDirection: "column",
+    [theme.breakpoints.up("md")]: {
+      flexDirection: "row"
+    },
+    alignItems: "center",
+    justifyContent: "space-around"
   }
 }));
 
-export default CheckoutTotal;
+export default withRouter(CheckoutTotal);

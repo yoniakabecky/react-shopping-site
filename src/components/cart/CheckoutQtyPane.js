@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
     alignSelf: "center"
   },
   itemTotal: {
-    fontSize: "1.2rem",
+    fontSize: "1.1rem",
     textAlign: "center"
   }
 }));
