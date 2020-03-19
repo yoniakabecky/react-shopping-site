@@ -46,7 +46,7 @@ Clone the project into your computer
 yarn
 ```
 
-You can use `npm install` as well
+  ` `You can use `npm install` as well
 
 - Start at Localhost
 
@@ -54,4 +54,4 @@ You can use `npm install` as well
 yarn start
 ```
 
-or `npm start` to start the server
+` `or `npm start` to start the server
