@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { makeStyles } from "@material-ui/core/styles";
-import defaultImg from "../../images/etc3.jpeg";
+import defaultImg from "../../images/heroDefault.jpeg";
 
 const StyledHero = styled.header`
   min-height: ${props => (props.full ? "100vh" : "60vh")};

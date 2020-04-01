@@ -1,11 +1,12 @@
 # React E-Commerce Site 🛍
 
-This is a simple shopping site for small stores and/or individuals.
+This is a simple shopping site for small stores and/or individuals.  
+![top page](src/images/mock.jpg)
 
 ## What is this site for? 🤔
 
 My friend creates Macramé and wants to sell her goods online. That is the idea of this site.  
- Using Contentful for product control and PayPal for payment.
+Using Contentful for product control and PayPal for payment.
 
 ## Demo 🖥
 
@@ -40,7 +41,7 @@ Clone the project into your computer
 
 ### Setting up the React
 
-- Installing dependencies
+#### Installing dependencies
 
 ```
 yarn
@@ -48,7 +49,7 @@ yarn
 
 &emsp; You can use `npm install` as well
 
-- Start at Localhost
+#### Start at Localhost
 
 ```
 yarn start
